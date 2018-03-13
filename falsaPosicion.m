@@ -4,12 +4,11 @@ xr=0;
 error=100;
 if ((y(xu)*y(xl))>0)%sentencia de control para descartar el intervalo
     disp(' ')
-    disp('Intervalo no valido para hallar la raiz')
+    disp('Intervalo no valido para hallar la raiz-')
     error=0.0001;
     xr=NaN;
-end
-
-while (abs(error)>tol)
+else
+    while (abs(error)>tol)
     aux=xr;
     fxl=y(xl); %se evalua la funcion en XL
     fxr=y(xr); %se evalua la funcion en Xr
@@ -27,8 +26,13 @@ while (abs(error)>tol)
     elseif(h>0)
         xl=xr;
     end
-    error=((xr-aux)/xr)*100; %se calcula el error relativo aproximado
+    error=abs(((xr-aux)/xr)*100); %se calcula el error relativo aproximado
 end
+    
+    
+end
+
+
 
 
 end

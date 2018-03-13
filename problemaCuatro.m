@@ -80,6 +80,20 @@ function btnFalsaPosicion_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
+syms x
+j=exp(1-x).*(sin(x))-1;
+y=inline(j);
+global xr error
+xl=-1;
+xu=0;
+tol=(0.5*(10^(2-3)));
+
+falsaPosicion(y,xl,xu,tol);
+set(handles.txtRfp,'string', num2str(xr));
+set(handles.txtEfp,'string', num2str(error));
+
+
+
 % --- Executes on button press in bntPuntoFijo.
 function bntPuntoFijo_Callback(hObject, eventdata, handles)
 % hObject    handle to bntPuntoFijo (see GCBO)
@@ -106,20 +120,20 @@ axes(handles.axes4);
 %intervalo de valores que se graficarán en eje equis mediante un for
 x= -50.3:0.01:50.3;
 % ingreso de la funcion a evaluar 
-y=exp(1-x)*(sin(x))-1;
+y=exp(1-x).*(sin(x))-1;
 %get(handles.funci,'String');
 % %funcion para calcular la raiz
- f=@(x)exp(1-x)*(sin(x))-1;
+ f=@(x)exp(1-x).*(sin(x))-1;
 plot(y,x);
 %ezplot(handles.axes1,f,x);
 hold on
 grid on
 xlabel('x')
 ylabel('y')
-title('2senx-x')
+title('e^-^(^x^-^1^)sen(x)=1')
 plot(x,zeros(size(x)),'b');
 plot(zeros(size(x)),x,'r');
-raiz=fzero(f,[-1,0]);
+raiz=fzero(f,-0.5);
 disp(raiz)
 % %prueba en consola del valor de la raiz
 % %disp(raiz)
@@ -139,6 +153,21 @@ function btnBiseccion_Callback(hObject, eventdata, handles)
 % hObject    handle to btnBiseccion (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+global error xr
+syms x
+y=exp(1-x).*(sin(x))-1;  
+f=inline(y);
+xl=-1;
+xu=0;
+tol=(0.5*(10^(2-3)));
+
+biseccion(f,xl,xu,tol);
+
+set(handles.txtRb,'string', num2str(xr));
+set(handles.txtEb,'string', num2str(error));
+
 
 
 % --- Executes on button press in btnBack.

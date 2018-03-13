@@ -24,7 +24,7 @@ while (abs(error)>tol)
     end
     error= abs( f(xr) );
     %((xr-aux)/xr)*100; %se calcula el error relativo aproximado
-     disp([xr  error])
+     %disp([xr  error])
    
 end
 end

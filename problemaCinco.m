@@ -79,6 +79,23 @@ function btnFalsaPosiicon_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
+syms x
+j=4*sin(x)-exp(x);
+y=inline(j);
+global xr error
+xl=0;
+xu=0.5;
+tol=(0.5*(10^(2-4)));
+
+falsaPosicion(y,xl,xu,tol);
+
+
+set(handles.txterr,'string', num2str(xr));
+disp(xr)
+set(handles.txtEafp,'string', num2str(error));
+disp(error)
+
+
 
 % --- Executes on button press in btnPuntoFijo.
 function btnPuntoFijo_Callback(hObject, eventdata, handles)
@@ -87,11 +104,51 @@ function btnPuntoFijo_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
+%tengo que arreglar esto no da bien el resultado
+global error x
+syms x
+cf=4*sin(x)-exp(x);
+cg=asin((exp(x)/4));
+f=inline(cf);
+g=inline(cg);
+dg=diff(cg,x);
+
+x=0.1;
+tol=(0.5*(10^(2-3)));
+
+iteracionPF(g,x,dg,tol);
+set(handles.txtRipf,'string',num2str(x));
+%disp(x)
+set(handles.txtEaipf,'string', num2str(error));
+
+
+
+
 % --- Executes on button press in btnNewtonR.
 function btnNewtonR_Callback(hObject, eventdata, handles)
 % hObject    handle to btnNewtonR (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+
+clc;
+global x error
+syms x
+cf=4*sin(x)-exp(x);
+f=inline(cf);
+derivada=diff(cf,x);
+df=inline(derivada);
+tol=(0.5*(10^(2-4)));
+x=0.1;
+n=0;
+disp(' n      x1      error');
+
+NewtonR(n,x,f,df,tol);
+
+set(handles.txtRnr2,'string',num2str(x));
+set(handles.txtEanr2,'string', num2str(error));
+
 
 
 % --- Executes on button press in btnMetodoGraf.
@@ -140,9 +197,7 @@ global error xr
 syms x
 y=4*sin(x)-exp(x);  
 f=inline(y);
-
 xl=0;
-disp(xl)
 xu=0.5;
 tol=(0.5*(10^(2-4)));
 
@@ -151,10 +206,10 @@ biseccion(f,xl,xu,tol);
 set(handles.txtRb,'string', num2str(xr));
 set(handles.txtEab,'string', num2str(error));
 
-
-
 % --- Executes on button press in pushbutton1.
 function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+close(handles.output);
+main;

@@ -22,7 +22,7 @@ function varargout = main(varargin)
 
 % Edit the above text to modify the response to help main
 
-% Last Modified by GUIDE v2.5 11-Mar-2018 17:17:25
+% Last Modified by GUIDE v2.5 13-Mar-2018 05:55:36
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -128,13 +128,13 @@ function pushbutton10_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-
+problemaTres;
 % --- Executes on button press in pushbutton11.
 function pushbutton11_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton11 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+problemaCuatro;
 
 % --- Executes on button press in btnClose.
 function btnClose_Callback(hObject, eventdata, handles)
@@ -142,3 +142,11 @@ function btnClose_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 close(handles.output);
+
+
+% --- Executes on button press in btnProblem5.
+function btnProblem5_Callback(hObject, eventdata, handles)
+% hObject    handle to btnProblem5 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+problemaCinco;
