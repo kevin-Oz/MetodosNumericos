@@ -84,7 +84,7 @@ syms x
 j=exp(1-x).*(sin(x))-1;
 y=inline(j);
 global xr error
-xl=-1;
+xl=-1*(pi/180);
 xu=0;
 tol=(0.5*(10^(2-3)));
 
@@ -101,11 +101,47 @@ function bntPuntoFijo_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
+global error x 
+syms x
+cf=exp(1-x).*(sin(x))-1; %ingreso de la funcion a evaluar
+cg=asin(1/(exp(1-x))); %ingreso de funcion despejada
+f=inline(cf); 
+g=inline(cg);
+dg=diff(cg,x); % derivar la funcion despejada
+
+x=(-0.5*(pi/180));
+tol=(0.5*(10^(2-3)));
+
+iteracionPF(g,x,dg,tol);
+
+set(handles.txtRpf,'string',num2str(x));
+disp(x)
+set(handles.txtEpf,'string', num2str(error));
+
+
 % --- Executes on button press in btnNewton.
 function btnNewton_Callback(hObject, eventdata, handles)
 % hObject    handle to btnNewton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+
+clc;
+global x error
+syms x
+cf=exp(1-x).*(sin(x))-1;
+f=inline(cf);
+derivada=diff(cf,x);
+df=inline(derivada);
+tol=(0.5*(10^(2-3)));
+x=(-0.5*(pi/180));
+n=0;
+disp(' n      x1      error');
+
+NewtonR(n,x,f,df,tol);
+set(handles.txtRnr,'string',num2str(x));
+set(handles.txtEnr,'string', num2str(error));
 
 
 % --- Executes on button press in bntMetodoGrafico.
@@ -133,7 +169,7 @@ ylabel('y')
 title('e^-^(^x^-^1^)sen(x)=1')
 plot(x,zeros(size(x)),'b');
 plot(zeros(size(x)),x,'r');
-raiz=fzero(f,-0.5);
+raiz=fzero(f,0.00872665);
 disp(raiz)
 % %prueba en consola del valor de la raiz
 % %disp(raiz)
@@ -175,3 +211,6 @@ function btnBack_Callback(hObject, eventdata, handles)
 % hObject    handle to btnBack (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+close(handles.output);
+main;
+

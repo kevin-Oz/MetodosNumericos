@@ -4,13 +4,13 @@ xr=0;
 error=100;
 if ((y(xu)*y(xl))>0)%sentencia de control para descartar el intervalo
     disp(' ')
-    disp('Intervalo no valido para hallar la raiz-')
-    error=0.0001;
+    msj = msgbox('Intervalo no valido para hallar la raiz');
+    error=NaN;
     xr=NaN;
 else
     while (abs(error)>tol)
     aux=xr;
-    fxl=y(xl); %se evalua la funcion en XL
+    fxl=y(xl); %se evalua la funcion en X1
     fxr=y(xr); %se evalua la funcion en Xr
 %   disp(fxl)
   
@@ -31,7 +31,6 @@ end
     
     
 end
-
 
 
 

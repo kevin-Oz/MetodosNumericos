@@ -4,15 +4,17 @@ xr=0;
 if ((f(xu)*f(xl))>0)%sentencia de control para descartar el intervalo
     disp(' ')
     disp('Intervalo no valido para hallar la raiz')
-    error=0.0001;
+     msj = msgbox('Intervalo no valido para hallar la raiz');
+    error=NaN;
     xr=NaN;
-end
-%se inicia el metodo de biseccion, con un ciclo en este caso while y
+else
+
+%se inicia el metodo de biseccion, con un ciclo en este caso while
 error=100;
 while (abs(error)>tol)
     aux=xr;
     xr=(xl+xu)/2;
-    fxl=f(xl); %se evalua la funcion en XL
+    fxl=f(xl); %se evalua la funcion en X1
     fxr=f(xr); %se evalua la funcion en Xr
     h=fxl*fxr; %se multiplican los reultados para f(Xr)*f(XL)
     if (h<0)     %sentencias condicionales para definir los nuevos limites.
@@ -27,4 +29,7 @@ while (abs(error)>tol)
      %disp([xr  error])
    
 end
+
+end
+
 end

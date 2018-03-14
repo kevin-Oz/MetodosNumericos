@@ -103,8 +103,6 @@ function btnPuntoFijo_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-
-%tengo que arreglar esto no da bien el resultado
 global error x
 syms x
 cf=4*sin(x)-exp(x);
@@ -114,7 +112,7 @@ g=inline(cg);
 dg=diff(cg,x);
 
 x=0.1;
-tol=(0.5*(10^(2-3)));
+tol=(0.5*(10^(2-4)));
 
 iteracionPF(g,x,dg,tol);
 set(handles.txtRipf,'string',num2str(x));

@@ -172,7 +172,7 @@ f=inline(cf);
 g=inline(cg);
 dg=diff(cg,x);
 
-x=-2.3562;
+x=(-2.3562*(pi/180));
 tol=(0.5*(10^(2-3)));
 
 iteracionPF(g,x,dg,tol);
@@ -196,7 +196,7 @@ f=inline(cf);
 derivada=diff(cf,x);
 df=inline(derivada);
 tol=(0.5*(10^(2-3)));
-x=-2.3562;
+x=(-2.3562*(pi/180));
 n=0;
 disp(' n      x1      error');
 
