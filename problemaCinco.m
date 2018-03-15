@@ -103,7 +103,7 @@ function btnPuntoFijo_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-global error x
+global error xo
 syms x
 cf=4*sin(x)-exp(x);
 cg=asin((exp(x)/4));
@@ -115,7 +115,7 @@ x=0.1;
 tol=(0.5*(10^(2-4)));
 
 iteracionPF(g,x,dg,tol);
-set(handles.txtRipf,'string',num2str(x));
+set(handles.txtRipf,'string',num2str(xo));
 %disp(x)
 set(handles.txtEaipf,'string', num2str(error));
 
@@ -131,7 +131,7 @@ function btnNewtonR_Callback(hObject, eventdata, handles)
 
 
 clc;
-global x error
+global xo error
 syms x
 cf=4*sin(x)-exp(x);
 f=inline(cf);
@@ -144,7 +144,7 @@ disp(' n      x1      error');
 
 NewtonR(n,x,f,df,tol);
 
-set(handles.txtRnr2,'string',num2str(x));
+set(handles.txtRnr2,'string',num2str(xo));
 set(handles.txtEanr2,'string', num2str(error));
 
 

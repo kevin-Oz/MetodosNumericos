@@ -147,7 +147,7 @@ function btnNewtonRaphson_Callback(hObject, eventdata, handles)
 
 
 clc;
-global x error
+global xo error
 syms x
 cf=exp(x)-4;
 f=inline(cf);
@@ -160,7 +160,7 @@ disp(' n      x1      error');
 
 NewtonR(n,x,f,df,tol);
 
-set(handles.txtRnr3,'string',num2str(x));
+set(handles.txtRnr3,'string',num2str(xo));
 set(handles.txtEanr3,'string', num2str(error));
 
 

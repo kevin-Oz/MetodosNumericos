@@ -164,7 +164,7 @@ function btnItercaPuntoFijo_Callback(hObject, eventdata, handles)
 % hObject    handle to btnItercaPuntoFijo (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-global error x
+global error xo
 syms x
 cf=2*sin(x)-x;
 cg=2*sin(x);
@@ -176,7 +176,7 @@ x=(-2.3562*(pi/180));
 tol=(0.5*(10^(2-3)));
 
 iteracionPF(g,x,dg,tol);
-set(handles.txtRipf,'string',num2str(x));
+set(handles.txtRipf,'string',num2str(xo));
 %disp(x)
 set(handles.txtEaipf,'string', num2str(error));
 
@@ -189,7 +189,7 @@ function btnNewRaphson_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 clc;
-global x error
+global xo error
 syms x
 cf=2*sin(x)-x;
 f=inline(cf);
@@ -202,7 +202,7 @@ disp(' n      x1      error');
 
 NewtonR(n,x,f,df,tol);
 
-set(handles.txtRnr2,'string',num2str(x));
+set(handles.txtRnr2,'string',num2str(xo));
 set(handles.txtEanr2,'string', num2str(error));
 
 % --- Executes on button press in btnVol.

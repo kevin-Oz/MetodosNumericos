@@ -135,9 +135,6 @@ function btnFP1_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
-
-
-
 syms x
 j=exp(x - 1) - (3*x)/2;
 y=inline(j);
@@ -162,7 +159,7 @@ function btnIPT1_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-global error x
+global error xo
 syms x
 cf=exp(x-1)-1.5*x;
 cg=exp(x-1)/1.5;
@@ -174,7 +171,7 @@ x=0;
 tol=(0.5*(10^(2-7)));
 
 iteracionPF(g,x,dg,tol);
-set(handles.txtRipf,'string',num2str(x));
+set(handles.txtRipf,'string',num2str(xo));
 %disp(x)
 set(handles.txtEaipf,'string', num2str(error));
 
@@ -186,7 +183,7 @@ function btnNR1_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 clc;
-global x error
+global xo error
 syms x
 cf=exp(x - 1) - (3*x)/2;
 f=inline(cf);
@@ -199,7 +196,7 @@ disp(' n      x1      error');
 
 NewtonR(n,x,f,df,tol);
 
-set(handles.txtra,'string',num2str(x));
+set(handles.txtra,'string',num2str(xo));
 set(handles.txtErr,'string', num2str(error));
 
 % --- Executes on button press in btnBack.

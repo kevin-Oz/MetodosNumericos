@@ -101,7 +101,7 @@ function bntPuntoFijo_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 
-global error x 
+global error xo 
 syms x
 cf=exp(1-x).*(sin(x))-1; %ingreso de la funcion a evaluar
 cg=asin(1/(exp(1-x))); %ingreso de funcion despejada
@@ -114,8 +114,7 @@ tol=(0.5*(10^(2-3)));
 
 iteracionPF(g,x,dg,tol);
 
-set(handles.txtRpf,'string',num2str(x));
-disp(x)
+set(handles.txtRpf,'string',num2str(xo));
 set(handles.txtEpf,'string', num2str(error));
 
 
@@ -128,7 +127,7 @@ function btnNewton_Callback(hObject, eventdata, handles)
 
 
 clc;
-global x error
+global xo error
 syms x
 cf=exp(1-x).*(sin(x))-1;
 f=inline(cf);
@@ -140,7 +139,7 @@ n=0;
 disp(' n      x1      error');
 
 NewtonR(n,x,f,df,tol);
-set(handles.txtRnr,'string',num2str(x));
+set(handles.txtRnr,'string',num2str(xo));
 set(handles.txtEnr,'string', num2str(error));
 
 
